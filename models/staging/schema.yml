@@ -1,0 +1,15 @@
+version: 2
+
+sources:
+  - name: staging
+    database: mla-dashboard-zoom
+    schema: mla_bq_zoom
+
+    tables:
+      - name: best_sellers
+      - name: categories
+      - name: subcategories
+      - name: hist_trends
+      - name: items
+      - name: products
+      - name: trends
