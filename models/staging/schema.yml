@@ -13,3 +13,69 @@ sources:
       - name: items
       - name: products
       - name: trends
+
+models:
+  - name: stg_best_sellers
+    description: List of best-selling products. The top 20 items/products for each category. 
+    columns:
+      - name: id
+        description: Primary key for this table
+        tests:
+          - not_null:
+              severity: warn
+      - name: position 
+        description: Position in the ranking.
+      - name: type
+        description: Indicates if it is a product or an item.
+      - name: category
+        description: Id of the category to which the best seller belongs.
+        tests:
+          - relationships:
+              to: ref('stg_categories')
+              field: id
+              severity: warn
+  
+  - name: stg_categories
+    description: List of categories that classify the products.
+    columns:
+      - name: id
+        description: Primary key for this table
+        tests:
+          - not_null:
+              severity: warn
+      - name: name
+        description: Category name.
+
+  - name: stg_items
+    description: List of goods identified as items and that appear in the list of best sellers.
+    columns:
+      - name: id
+        description: Primary key for this table
+        tests:
+          - not_null:
+              severity: warn
+      - name: name
+        description: Item name.
+      - name: sold_quantity
+        description: Quantity of the item sold.
+      - name: price
+        description: Item price
+      - name: category
+        description: Id of the category to which the item belongs.
+
+  - name: stg_products
+    description: List of goods identified as products and that appear in the list of best sellers.
+    columns:
+      - name: id
+        description: Primary key for this table
+        tests:
+          - not_null:
+              severity: warn
+      - name: name
+        description: Product name.
+      - name: sold_quantity
+        description: Quantity of the product sold.
+      - name: price
+        description: Product price
+      - name: category
+        description: Id of the category to which the product belongs.
