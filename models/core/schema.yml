@@ -1,0 +1,12 @@
+version: 2
+
+models:
+  - name: fact_best_sellers
+    description: >
+      List of the best sellers by category. 
+      Including the information of the item or product.
+      And the name of the category to which it belongs.
+      
+  - name: fact_goods
+    description: >
+      List of all goods including items and products.
