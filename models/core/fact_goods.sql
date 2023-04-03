@@ -16,18 +16,13 @@ goods_unioned as (
     select * from items
     union all
     select * from products
-), 
-
-categories as (
-    select *
-    from {{ ref('stg_categories') }}
 )
 select 
     goods_unioned.id, 
     goods_unioned.name, 
     goods_unioned.sold_quantity,
     goods_unioned.price, 
-from goods_unioned
-inner join categories as category
-on goods_unioned.category = category.id
+    goods_unioned.category,
+    goods_unioned.goods_type
+from goods_unioned 
 

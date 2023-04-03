@@ -5,7 +5,7 @@ select
 cast(id as string) as id,
 
 -- item info
-cast(title as integer) as name,
+cast(title as string) as name,
 cast(sold_quantity as integer) as sold_quantity,
 cast(price as integer) as price,
 
